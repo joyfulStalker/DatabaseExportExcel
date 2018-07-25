@@ -34,4 +34,23 @@ public class TableColumnService {
 		List<TableColumn> tableColumn = columnMapper.getTableColumn(dataSourceName,tableName);
 		return tableColumn;
 	}
+	
+	/**
+	* 查询数据库所有表的表结构
+	* @author liusonglin
+	* @date 2018年7月25日
+	* @param dataSourceName
+	* @param tableName
+	* @return
+	*/
+		
+	public List<TableColumn> getAllTableColumn(String dataSourceName) {
+		if(StringUtils.isEmpty(dataSourceName)) {
+			throw new RuntimeException("请输入数据库名");
+		}
+		//查询数据库和表是否存在
+		//待做
+		List<TableColumn> tableColumn = columnMapper.getAllTableColumn(dataSourceName);
+		return tableColumn;
+	}
 }

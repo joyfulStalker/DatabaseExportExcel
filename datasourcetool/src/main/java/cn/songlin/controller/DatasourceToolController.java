@@ -33,7 +33,8 @@ public class DatasourceToolController {
 	@PostMapping("test")
 	@ApiOperation(value = "测试")
 	public ResponseEntity<List<TableColumn>> register(@RequestBody SingleTableColumnDto tableColumnDto) {
-
+		List<TableColumn> allTableColumn = tableColumnService.getAllTableColumn(tableColumnDto.getDataSourceName());
+		System.out.println(allTableColumn);
 		List<TableColumn> tableColumns = tableColumnService.getTableColumns(tableColumnDto.getDataSourceName(),
 				tableColumnDto.getTableName());
 		excelService.createSingleTableColumnExcel(tableColumns,tableColumnDto);

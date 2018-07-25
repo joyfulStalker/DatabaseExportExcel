@@ -23,6 +23,8 @@ public class TableColumn {
 
 	private String columnComment;// 备注
 
+	private String tableName;// 表名
+
 	public String getColumnName() {
 		return columnName;
 	}
@@ -77,6 +79,14 @@ public class TableColumn {
 
 	public void setColumnComment(String columnComment) {
 		this.columnComment = columnComment;
+	}
+
+	public String getTableName() {
+		return tableName;
+	}
+
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
 	}
 
 }
