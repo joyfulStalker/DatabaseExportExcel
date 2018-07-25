@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.songlin.mapper.TableColumnMapper">
+
+
+	<resultMap type="cn.songlin.entity.TableColumn" id="result">
+	</resultMap>
+
+	<select id="getTableColumn" resultMap="result">
+		SELECT
+		COLUMN_NAME
+		columnName,
+		COLUMN_TYPE columnType,
+		DATA_TYPE dataType,
+		CHARACTER_MAXIMUM_LENGTH characterMaximumLength,
+		IS_NULLABLE
+		isNullable,
+		COLUMN_DEFAULT columnDefault,
+		COLUMN_COMMENT
+		columnComment
+		FROM
+		INFORMATION_SCHEMA.COLUMNS
+		WHERE
+		table_schema = #{dataSourceName}
+		AND table_name = #{tableName}
+	</select>
+</mapper>
