@@ -11,43 +11,50 @@
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 <script type="text/javascript"></script>
 <!-- 引入样式 -->
-<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<link rel="stylesheet"
+	href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<style type="text/css">
+.mystyle {
+	width: 60%;
+	margin-left: 20%;
+	margin-top: 60px;
+}
+.buttonStyle {
+	margin-left: 40%;
+}
+.bodyStyle {
+	background-image: url("./01.jpg");
+	filter: alpha(Opacity : 100);
+	opacity: 1;
+}
+</style>
 </head>
-<body>
-	<div id="app">
+<body class="bodyStyle">
+	<div id="app" class='mystyle'>
 		<div>
-		
-		<h2>功能一：导出指定数据库中所有表的表结构到Excel</h2>
+
+			<h2>功能一：导出指定数据库中所有表的表结构到Excel</h2>
 			<el-form v-model="dataForm" label-width="100px" class="demo-ruleForm">
-			  <el-form-item label="数据库名称">
-			    <el-input v-model="dataForm.dataSourceName" placeholder='请输入数据库名'></el-input>
-			  </el-form-item>
-			  <el-form-item label="导出地址">
-			    <el-input v-model="dataForm.excelFileName" placeholder="请输入文件名（默认输出地址为桌面）"></el-input>
-			  </el-form-item>
-			  <el-form-item>
-			    <el-button type="primary" @click="submitForm(dataForm)">导出数据库到Excel</el-button>
-			  </el-form-item>
-			</el-form>
+			<el-form-item label="数据库名称"> <el-input
+				v-model="dataForm.dataSourceName" placeholder='请输入数据库名'></el-input>
+			</el-form-item> <el-form-item label="导出地址"> <el-input
+				v-model="dataForm.excelFileName" placeholder="请输入文件名（默认输出地址为桌面）"></el-input>
+			</el-form-item> <el-form-item> <el-button type="success" class="buttonStyle"
+				@click="submitForm(dataForm)">导出数据库到Excel</el-button> </el-form-item> </el-form>
 		</div>
 		<br>
-		<hr>
+		<hr style="height:1px;border:none;border-top:1px solid #555555;" />
 		<div>
-		<h2>功能二：导出指定数据库中指定表的表结构到Excel</h2>
-			<el-form v-model="dataForm1" label-width="100px" class="demo-ruleForm">
-			  <el-form-item label="数据库名称">
-			    <el-input v-model="dataForm1.dataSourceName" placeholder='请输入数据库名'></el-input>
-			  </el-form-item>
-			  <el-form-item label="表名">
-			    <el-input v-model="dataForm1.tableName" placeholder='请输入表名'></el-input>
-			  </el-form-item>
-			  <el-form-item label="导出文件名">
-			    <el-input v-model="dataForm1.excelFileName" placeholder="请输入文件名（默认输出地址为桌面）"></el-input>
-			  </el-form-item>
-			  <el-form-item>
-			    <el-button type="primary" @click="printSingle(dataForm1)">导出数据库指定表到Excel</el-button>
-			  </el-form-item>
-			</el-form>
+			<h2>功能二：导出指定数据库中指定表的表结构到Excel</h2>
+			<el-form v-model="dataForm1" label-width="100px"
+				class="demo-ruleForm"> <el-form-item label="数据库名称">
+			<el-input v-model="dataForm1.dataSourceName" placeholder='请输入数据库名'></el-input>
+			</el-form-item> <el-form-item label="表名"> <el-input
+				v-model="dataForm1.tableName" placeholder='请输入表名'></el-input> </el-form-item> <el-form-item
+				label="导出文件名"> <el-input
+				v-model="dataForm1.excelFileName" placeholder="请输入文件名（默认输出地址为桌面）"></el-input>
+			</el-form-item> <el-form-item> <el-button type="success" class="buttonStyle"
+				@click="printSingle(dataForm1)">导出数据库指定表到Excel</el-button> </el-form-item> </el-form>
 		</div>
 	</div>
 </body>
@@ -55,37 +62,37 @@
 	var app = new Vue({
 		el : '#app',
 		data : {
-			dataForm: {
-				"dataSourceName": '',
-				'excelFileName': ''
-				
+			dataForm : {
+				"dataSourceName" : '',
+				'excelFileName' : ''
+
 			},
-			dataForm1: {
-				"dataSourceName": '',
-				'excelFileName': '',
-				'tableName': ''
+			dataForm1 : {
+				"dataSourceName" : '',
+				'excelFileName' : '',
+				'tableName' : ''
 			}
 		},
 		methods : {
-			printSingle: function(form){
-				axios.post('/exportExcel/printSingle', this.dataForm1)
-				  .then(function (res) {
-				    if(res.status == 200){
-				    	alert('导出成功');
-				    }else{
-				    	alert('导出失败,原因:'+res.data);
-				    }
-				  })
+			printSingle : function(form) {
+				axios.post('/exportExcel/printSingle', this.dataForm1).then(
+						function(res) {
+							if (res.status == 200) {
+								alert('导出成功');
+							} else {
+								alert('导出失败------原因:' + res.data);
+							}
+						})
 			},
-			submitForm: function(form) {
-				axios.post('/exportExcel/printAll', this.dataForm)
-				  .then(function (res) {
-				    if(res.status == 200){
-				    	alert('导出成功');
-				    }else{
-				    	alert('导出失败,原因:'+res.data);
-				    }
-				  })
+			submitForm : function(form) {
+				axios.post('/exportExcel/printAll', this.dataForm).then(
+						function(res) {
+							if (res.status == 200) {
+								alert('导出成功');
+							} else {
+								alert('导出失败------原因:' + res.data);
+							}
+						})
 			}
 		}
 	})
