@@ -51,7 +51,7 @@ public class ExcelService {
 
 		// 第二步，在workbook中添加一个sheet,对应Excel文件中的sheet
 		HSSFSheet sheet = wb.createSheet(tableColumnDto.getSheetName());
-		sheet.setDefaultColumnWidth(450 * 10);
+		sheet.setDefaultColumnWidth(12);
 		// 第四步，创建单元格，并设置值表头 设置表头居中
 		HSSFCellStyle style = wb.createCellStyle();
 		style.setAlignment(HSSFCellStyle.ALIGN_CENTER); // 创建一个居中格式
@@ -61,12 +61,12 @@ public class ExcelService {
 
 		HSSFRow row = sheet.createRow(0);
 		row.setHeight((short) 450);// 设置行高
-		cell = row.createCell(5);
+		cell = row.createCell(4);
 		cell.setCellValue(tableColumnDto.getDataSourceName() + "数据库所有表的表结构");
 		cell.setCellStyle(style);
 
 		// POI导出EXCEL设置跨行跨列（在所有数据行和列创建完成后再执行）
-		CellRangeAddress range = new CellRangeAddress(0, 0, 5, 10);
+		CellRangeAddress range = new CellRangeAddress(0, 0, 4, 6);
 		sheet.addMergedRegion(range);
 
 		// 数据处理
