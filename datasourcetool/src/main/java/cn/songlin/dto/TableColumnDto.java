@@ -1,13 +1,13 @@
 package cn.songlin.dto;
 
 /**
- * 单表结构查询dto
+ * 表结构查询dto
  * 
  * @author liusonglin
  * @date 2018年7月25日
  */
 
-public class SingleTableColumnDto {
+public class TableColumnDto {
 
 	private String dataSourceName;
 
@@ -17,7 +17,7 @@ public class SingleTableColumnDto {
 
 	private String sheetName;
 
-	private String[] excelTitle;
+	private String[] excelTitle = {"列名", "数据类型", "字段类型", "长度", "是否为空", "默认值", "备注"};
 
 	public String getDataSourceName() {
 		return dataSourceName;
@@ -53,10 +53,6 @@ public class SingleTableColumnDto {
 
 	public String[] getExcelTitle() {
 		return excelTitle;
-	}
-
-	public void setExcelTitle(String[] excelTitle) {
-		this.excelTitle = excelTitle;
 	}
 
 }
