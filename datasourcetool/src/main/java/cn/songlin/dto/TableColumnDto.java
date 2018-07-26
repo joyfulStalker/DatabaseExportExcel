@@ -44,11 +44,7 @@ public class TableColumnDto {
 	}
 
 	public String getSheetName() {
-		return sheetName;
-	}
-
-	public void setSheetName(String sheetName) {
-		this.sheetName = sheetName;
+		return "数据库"+this.dataSourceName+"的所有表的表结构";
 	}
 
 	public String[] getExcelTitle() {
